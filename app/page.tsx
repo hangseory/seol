@@ -369,6 +369,10 @@ export default function Home() {
 
             <div className="p-5">
               <div className="mb-3 flex items-center justify-between">
+                <div className="text-sm text-slate-600">
+                  페이지 {pageNumber} / {numPages || 0}
+                </div>
+
                 <div className="flex gap-2">
                   <button
                     className="rounded-xl bg-slate-900 px-3 py-2 text-sm text-white disabled:opacity-40"
@@ -387,8 +391,9 @@ export default function Home() {
                     <ChevronRight className="ml-1 inline h-4 w-4" />
                   </button>
                 </div>
+              </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex justify-end items-center gap-2">
                 <input
                   value={pageJumpInput}
                   onChange={(e) => setPageJumpInput(e.target.value)}
@@ -405,12 +410,6 @@ export default function Home() {
                   이동
                 </button>
               </div>
-
-                <div className="text-sm text-slate-600">
-                  페이지 {pageNumber} / {numPages || 0}
-                </div>
-              </div>
-
 
               <PdfViewer
                 file={file}

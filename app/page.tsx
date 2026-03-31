@@ -388,11 +388,6 @@ export default function Home() {
                   </button>
                 </div>
 
-                <div className="text-sm text-slate-600">
-                  페이지 {pageNumber} / {numPages || 0}
-                </div>
-              </div>
-
               <div className="flex items-center gap-2">
                 <input
                   value={pageJumpInput}
@@ -409,6 +404,11 @@ export default function Home() {
                 >
                   이동
                 </button>
+              </div>
+
+                <div className="text-sm text-slate-600">
+                  페이지 {pageNumber} / {numPages || 0}
+                </div>
               </div>
 
 

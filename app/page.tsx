@@ -478,7 +478,7 @@ export default function Home() {
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 placeholder="문서 내용에 대해 질문하세요"
-                className="w-full rounded-2xl border border-slate-300 px-3 py-2 outline-none"
+                className="w-full rounded-2xl border border-slate-300 px-3 py-2 text-base font-medium text-slate-800 placeholder:font-medium placeholder:text-green-700 outline-none"
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();

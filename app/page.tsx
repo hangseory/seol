@@ -107,6 +107,7 @@ function SectionCard({
 }
 
 export default function Home() {
+  const [pageJumpInput, setPageJumpInput] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState('');
   const [numPages, setNumPages] = useState(0);
@@ -254,6 +255,16 @@ export default function Home() {
     setPageNumber(nextPage);
   }
 
+  function jumpToPage() { 
+  const target = Number(pageJumpInput);
+
+  if (!Number.isInteger(target)) return;
+  if (target < 1 || target > numPages) return;
+
+  setPageNumber(target);
+  setPageJumpInput('');
+  }
+
   const currentPageAnalysis = useMemo(() => {
     return (
       pageAnalysisByPage[pageNumber] || {
@@ -381,6 +392,25 @@ export default function Home() {
                   페이지 {pageNumber} / {numPages || 0}
                 </div>
               </div>
+
+              <div className="flex items-center gap-2">
+                <input
+                  value={pageJumpInput}
+                  onChange={(e) => setPageJumpInput(e.target.value)}
+                  placeholder="페이지"
+                  className="w-20 rounded-xl border border-slate-300 px-3 py-2 text-base font-medium text-slate-800 placeholder:text-slate-400 text-sm outline-none"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') jumpToPage();
+                  }}
+                />
+                <button
+                  className="rounded-xl bg-slate-900 px-3 py-2 text-sm text-white hover:bg-slate-800"
+                  onClick={jumpToPage}
+                >
+                  이동
+                </button>
+              </div>
+
 
               <PdfViewer
                 file={file}
